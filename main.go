@@ -18,7 +18,7 @@ func main() {
 	popTart := model.NewItem("Pop Tart", 45, 10)
 	lays := model.NewItem("Lays", 35, 10)
 
-	items := map[string]model.Item{
+	items := map[string]*model.Item{
 		"Pepsi": pepsi,
 		"Pop Tart": popTart,
 		"Lays": lays,
@@ -28,11 +28,11 @@ func main() {
 
 	machine := model.NewVendingMachine(inventory, buttonMap())
 
-	dispensedItem, change, err := machine.Vend("a1", 50)
+	dispensedItem, err := machine.Vend("a1")
 
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Println("item: ", dispensedItem, "change due:", change)
+	fmt.Println(dispensedItem)
 }
